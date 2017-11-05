@@ -1,17 +1,6 @@
 const readline = require('readline');
 
 
-let game = [{
-  score: 0,
-  table: newTable()
-}]
-
-let testTable = [
-  [2, 2, 0, 0],
-  [0, 8, 0, 2],
-  [2, 4, 4, 2],
-  [2, 4, 8, 8]
-]
 
 let testScore = 0;
 let testTable2 = [
@@ -21,16 +10,6 @@ let testTable2 = [
   [0, 0, 0, 0]
 ];
 
-function newTable() {
-  let emptyTable = [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
-  ];
-
-  return _addTile(emptyTable);
-}
 
 function zeroPrecedesNonZero(arr) {
   let lastNonZeroIndex = -1;
@@ -182,7 +161,8 @@ process.stdin.on('keypress', (str, key) => {
 function printGameState() {
   console.log(`
 score: ${testScore}
-${testTable2.join("\n")}
+
+${testTable2.map(row => row.map(n => n.toString().padEnd(5)).join("") + "\n\n").join("")}
   `)
 }
 

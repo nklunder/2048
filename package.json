@@ -1,0 +1,20 @@
+{
+  "name": "2048",
+  "version": "1.0.0",
+  "description": "Node clone of 2048 game",
+  "main": "2048.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nklunder/2048.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nklunder/2048/issues"
+  },
+  "homepage": "https://github.com/nklunder/2048#readme",
+  "dependencies": {}
+}
