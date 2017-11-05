@@ -69,6 +69,7 @@ function updateTableAndScore(table, score = 0) {
         filtered = filtered.slice(2);
         newScore += val;
         padCount++;
+        shouldAddTile = true;
       } else {
         newArray.push(a);
         filtered = filtered.slice(1);
