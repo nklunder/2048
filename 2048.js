@@ -1,4 +1,5 @@
 const readline = require('readline');
+const colors = require('colors');
 
 
 
@@ -9,6 +10,14 @@ let testTable2 = [
   [0, 0, 0, 0],
   [0, 0, 0, 0]
 ];
+
+let colorTest = [
+  [0, 0, 0, 0],
+  [0, 0, 2, 4],
+  [8, 16, 32, 64],
+  [128, 256, 512, 2048]
+];
+
 
 
 function zeroPrecedesNonZero(arr) {
@@ -159,13 +168,38 @@ process.stdin.on('keypress', (str, key) => {
 })
 
 function printGameState() {
+  let formatted = testTable2
+    .map(row => row.map(n => {
+      let color = "white";
+
+      switch (n) {
+        case 0:
+          color = "white"; break;
+        case 2:
+          color = "grey"; break;
+        case 4:
+          color = "cyan"; break; 
+        case 8:
+          color = "magenta"; break;
+        case 16:
+          color = "green"; break;
+        case 32:
+          color = "blue"; break;
+        case 64:
+          color: "yellow"; break;
+        case 128:
+          color: "red"; break;
+      }
+
+      return colors[color](n.toString().padEnd(5))
+    }).join("")).join("\n\n")
+  
   console.log(`
 score: ${testScore}
 
-${testTable2.map(row => row.map(n => n.toString().padEnd(5)).join("") + "\n\n").join("")}
-  `)
+${formatted}
+  `);
 }
-
 
 process.stdout.write('\u001B[2J\u001B[0;0f');
 _addTile(testTable2)

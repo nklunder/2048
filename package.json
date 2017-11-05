@@ -16,5 +16,7 @@
     "url": "https://github.com/nklunder/2048/issues"
   },
   "homepage": "https://github.com/nklunder/2048#readme",
-  "dependencies": {}
+  "dependencies": {
+    "colors": "^1.1.2"
+  }
 }
