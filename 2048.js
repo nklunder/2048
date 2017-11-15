@@ -32,6 +32,7 @@ function zeroPrecedesNonZero(arr) {
 
 function _addTile(table) {
   let emptyCells = [];
+  let cellValues = [2, 2, 2, 2, 2, 2, 2, 2, 2, 4];
 
   for (let i = 0; i < table.length; i++) {
     for (let j = 0; j < table.length; j++) {
@@ -43,7 +44,7 @@ function _addTile(table) {
 
   if (emptyCells.length) {
     let [x, y] = emptyCells[Math.floor(Math.random() * emptyCells.length)];
-    table[x][y] = [2, 4][Math.round(Math.random())];
+    table[x][y] = cellValues[Math.floor(Math.random() * cellValues.length)];
   } else {
     process.stdout.write('\u001B[2J\u001B[0;0f');    
     console.log("Game over!");
@@ -171,25 +172,34 @@ process.stdin.on('keypress', (str, key) => {
 function printGameState() {
   let formatted = testTable2
     .map(row => row.map(n => {
-      let color = "white";
+      // anything larger than 2048
+      let color = "magenta";
 
       switch (n) {
         case 0:
-          color = "white"; break;
-        case 2:
           color = "grey"; break;
+        case 2:
+          color = "white"; break;
         case 4:
-          color = "cyan"; break; 
+          color = "white"; break; 
         case 8:
-          color = "magenta"; break;
+          color = "white"; break;
         case 16:
-          color = "green"; break;
+          color = "cyan"; break;
         case 32:
-          color = "blue"; break;
+          color = "cyan"; break;
         case 64:
-          color: "yellow"; break;
+          color: "cyan"; break;
         case 128:
-          color: "red"; break;
+          color: "yellow"; break;
+        case 256:
+          color: "yellow"; break;
+        case 512:
+          color: "yellow"; break;
+        case 1024:
+          color: "green"; break;
+        case 2048:
+          color: "green"; break;
       }
 
       return colors[color](n.toString().padEnd(5))
